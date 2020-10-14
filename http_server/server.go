@@ -5,6 +5,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"html/template"
+	"io/ioutil"
 	"net/http"
 	"path/filepath"
 )
@@ -18,6 +19,17 @@ func main() {
 	handler.HandleFunc("/get", func(writer http.ResponseWriter, request *http.Request) {
 		vars := request.URL.Query()
 		fmt.Println(vars)
+		writer.Write([]byte("OK"))
+	})
+
+	handler.HandleFunc("/post", func(writer http.ResponseWriter, request *http.Request) {
+		body := struct {
+			Name string
+			Age  int
+		}{}
+		bs, _ := ioutil.ReadAll(request.Body)
+		json.Unmarshal(bs, &body)
+		fmt.Println(body)
 		writer.Write([]byte("OK"))
 	})
 
