@@ -27,3 +27,10 @@ func TestMap2(t *testing.T) {
 	x2 := m["a"]
 	fmt.Println(x1 == x2, *x1 == *x2)
 }
+
+func TestMap3(t *testing.T) {
+	m := make(map[string]string)
+	m["a"] = "123"
+
+	delete(m, "a")
+}
