@@ -34,3 +34,16 @@ func TestMap3(t *testing.T) {
 
 	delete(m, "a")
 }
+
+func TestMap4(t *testing.T) {
+	m := map[string]int{
+		"a": 1,
+		"b": 2,
+	}
+	fmt.Println(m)
+}
+
+func TestMap5(t *testing.T) {
+	var m map[string]int
+	fmt.Println(m["a"])
+}

@@ -11,44 +11,53 @@ import (
 func TestStrInfo(t *testing.T) {
 	str := "陈濛abc"
 
-	fmt.Printf("%x", str)
-	fmt.Println()
+	fmt.Printf("%x\n", str)
+
 	// 打印每个字节的16进制
 	for i := 0; i < len(str); i++ {
 		fmt.Printf("%x\t", str[i])
 	}
-
 	fmt.Println()
 
-	fmt.Printf("%q", str)
-	fmt.Println()
+	fmt.Printf("%q\n", str)
+
 	// 如果该字节表示一个字符，则打印该字符，否则输出Unicode编码
 	for i := 0; i < len(str); i++ {
 		fmt.Printf("%q\t", str[i])
 	}
 }
 
+// 遍历字符串
 func TestTraverseRune(t *testing.T) {
-	str := "陈濛abc"
+	str := "陈濛abc" // utf编码中，中文3字节，英文1字节，len(str)表示字节数，所以是9
 
 	// 遍历UTF-8字符
-	for index, runeValue := range str {
-		fmt.Printf("%#U 起始字节位置%d\t", runeValue, index)
+	for _, runeValue := range str {
+		fmt.Printf("%#U\t", runeValue)
 	}
-
 	fmt.Println()
 
-	// 另一种遍历UTF-8字符
+	for _, runeValue := range str {
+		fmt.Printf("%q", runeValue)
+	}
+	fmt.Println()
+
+	for _, runeValue := range str {
+		fmt.Print(string(runeValue))
+	}
+	fmt.Println()
+
+	//另一种遍历UTF-8字符的方法，可以指定其他编码方式来解码byte[]
 	for i, w := 0, 0; i < len(str); i += w {
-		runeValue, width := utf8.DecodeRuneInString(str[i:])
-		fmt.Printf("%#U 起始字节位置%d\t", runeValue, i)
+		runeValue, width := utf8.DecodeRuneInString(str[i:]) // 从str的i处开始，解码出第一个合法utf-8字符，返回该字符和字符所占字节数
+		fmt.Printf("%#U\t", runeValue)
 		w = width
 	}
 }
 
 func TestStr2Rune(t *testing.T) {
 	str := "陈濛abc"
-	rs := []rune(str)
+	rs := []rune(str) // str解码成utf-8字符数组，len(rs) == 5
 	for i := 0; i < len(rs); i++ {
 		fmt.Printf("%#U\t", rs[i])
 	}
@@ -58,7 +67,7 @@ func TestSplit(t *testing.T) {
 	str := "127.0.0.1:8080"
 	strSplit := strings.Split(str, ":")
 	for i := 0; i < len(strSplit); i++ {
-		fmt.Printf("%s\t", strSplit)
+		fmt.Printf("%s\t", strSplit[i])
 	}
 
 	str = "a b cc    dd  "
