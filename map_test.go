@@ -47,3 +47,13 @@ func TestMap5(t *testing.T) {
 	var m map[string]int
 	fmt.Println(m["a"])
 }
+
+// 测试map之间的赋值
+func TestMap6(t *testing.T) {
+	m1 := map[string]int{"a": 1}
+	m2 := m1
+	fmt.Printf("%p %p %p %p\n", m1, m2, &m1, &m2)
+
+	m2["a"] = 2
+	fmt.Println(m1, m2)
+}

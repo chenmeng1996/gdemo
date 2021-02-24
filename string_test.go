@@ -151,3 +151,15 @@ func TestInt2Str(t *testing.T) {
 	s := strconv.Itoa(12)
 	fmt.Println(s)
 }
+
+func TestIntPlusStr(t *testing.T) {
+	fmt.Println(strconv.Itoa(1) + ":")
+	a := 1
+	fmt.Println(strconv.Itoa(a) + ":")
+}
+
+func TestRawStr(t *testing.T) {
+	b := "abc"
+	a := fmt.Sprintf(`"hello" 'world' %s`, b)
+	fmt.Println(a)
+}

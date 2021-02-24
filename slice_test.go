@@ -141,3 +141,14 @@ func TestMemory(t *testing.T) {
 	fmt.Printf("%p %p\n", a, &a)
 	fmt.Printf("%p %p\n", b, &b)
 }
+
+func TestNilSlice(t *testing.T) {
+	var sli []string
+	fmt.Println(sli, sli == nil)
+	_ = append(sli, "a")
+	fmt.Println(sli)
+	sli = append(sli, "b")
+	fmt.Println(sli)
+	_ = append(sli, "c")
+	fmt.Println(sli)
+}
