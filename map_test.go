@@ -57,3 +57,12 @@ func TestMap6(t *testing.T) {
 	m2["a"] = 2
 	fmt.Println(m1, m2)
 }
+
+func TestMap7(t *testing.T) {
+	m1 := map[string]int{"a": 1}
+	m2 := map[string]int{"a": 2, "b": 3}
+	for k, v := range m2 {
+		m1[k] = v
+	}
+	fmt.Println(m1)
+}

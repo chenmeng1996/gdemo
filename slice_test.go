@@ -152,3 +152,13 @@ func TestNilSlice(t *testing.T) {
 	_ = append(sli, "c")
 	fmt.Println(sli)
 }
+
+func TestSliceCopy(t *testing.T) {
+	type P struct {
+		A map[string]string
+	}
+	sli := []P{{A: map[string]string{"a": "b"}}}
+	sli2 := sli
+	fmt.Printf("%p %p %p\n", sli, &sli, sli[0].A)
+	fmt.Printf("%p %p %p\n", sli2, &sli2, sli2[0].A)
+}

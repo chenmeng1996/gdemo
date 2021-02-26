@@ -163,3 +163,8 @@ func TestRawStr(t *testing.T) {
 	a := fmt.Sprintf(`"hello" 'world' %s`, b)
 	fmt.Println(a)
 }
+
+func TestStrConv(t *testing.T) {
+	s, _ := strconv.ParseFloat("abc", 64)
+	fmt.Println(s)
+}

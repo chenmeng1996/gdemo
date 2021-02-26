@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"testing"
 )
@@ -37,4 +38,23 @@ func TestStructInit(t *testing.T) {
 	a.Slice = append(a.Slice, "abc")
 	a.Map["x"] = 1
 	fmt.Println(a)
+}
+
+type A struct {
+	A int `json:"a"`
+	B
+}
+
+type B struct {
+	b string
+}
+
+func TestStructTwo(t *testing.T) {
+	a := A{A: 1}
+	fmt.Println(a)
+	b := B{b: "qwe"}
+	a.B = b
+
+	res, _ := json.Marshal(a)
+	fmt.Println(string(res))
 }
