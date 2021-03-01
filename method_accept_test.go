@@ -21,7 +21,7 @@ func Test1(t *testing.T) {
 
 	fmt.Println()
 
-	// 只要结构体有指针接收者方法，接口只能赋值指针
+	// 只要结构体实现接口的方法中，有指针接收者方法，则只能将指针结构体赋值给接口
 	var age1 Age = p2
 	fmt.Printf("address is %p\n", age1)
 	age1.Get()

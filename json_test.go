@@ -57,3 +57,29 @@ func TestOmitempty(t *testing.T) {
 	js := string(bs)
 	fmt.Println(js)
 }
+
+func TestJsonInline(t *testing.T) {
+	type Struct2 struct {
+		A string `json:"b"`
+		C int    `json:"c"`
+	}
+	type Struct struct {
+		A       string `json:"a"`
+		Struct2 `json:",inline"`
+	}
+
+	s := Struct{
+		A: "abc",
+		Struct2: Struct2{
+			A: "efg",
+			C: 123,
+		},
+	}
+	bs, _ := json.Marshal(s)
+	jsonS := string(bs)
+	fmt.Println(jsonS)
+
+	var s1 Struct
+	_ = json.Unmarshal(bs, &s1)
+	fmt.Println(s1, s1.Struct2, s1.A, s1.Struct2.A)
+}
