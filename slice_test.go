@@ -162,3 +162,8 @@ func TestSliceCopy(t *testing.T) {
 	fmt.Printf("%p %p %p\n", sli, &sli, sli[0].A)
 	fmt.Printf("%p %p %p\n", sli2, &sli2, sli2[0].A)
 }
+
+func TestSliceNil(t *testing.T) {
+	var a []string
+	fmt.Printf("%p %p\n", a, &a)
+}

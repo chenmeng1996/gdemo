@@ -58,3 +58,12 @@ func TestStructTwo(t *testing.T) {
 	res, _ := json.Marshal(a)
 	fmt.Println(string(res))
 }
+
+func TestStructEqual(t *testing.T) {
+	type E struct {
+		A int
+	}
+	a := E{A: 1}
+	b := E{A: 1}
+	fmt.Println(a == b)
+}

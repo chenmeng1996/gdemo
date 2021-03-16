@@ -83,3 +83,11 @@ func TestJsonInline(t *testing.T) {
 	_ = json.Unmarshal(bs, &s1)
 	fmt.Println(s1, s1.Struct2, s1.A, s1.Struct2.A)
 }
+
+func TestJson1(t *testing.T) {
+	var a []string
+	b := []string{"a", "b"}
+	bs, _ := json.Marshal(b)
+	err := json.Unmarshal(bs, &a)
+	fmt.Println(err, a)
+}

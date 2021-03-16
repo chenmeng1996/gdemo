@@ -27,4 +27,5 @@ func TestHttpResponseWithClose(t *testing.T) {
 			resp.Body.Close()
 		}
 	}
+
 }
