@@ -66,3 +66,11 @@ func TestMap7(t *testing.T) {
 	}
 	fmt.Println(m1)
 }
+
+// 遍历nil map
+func TestMap8(t *testing.T) {
+	var m map[string]string
+	for k, v := range m {
+		fmt.Println(k, v)
+	}
+}

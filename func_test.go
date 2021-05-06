@@ -43,3 +43,13 @@ func TestFunc1(t *testing.T) {
 	fn("a")
 	fn("a", "b")
 }
+
+func TestDefer3(t *testing.T) {
+	defer func() {
+		fmt.Println(1)
+	}()
+	defer func() {
+		fmt.Println(2)
+	}()
+	fmt.Println(3)
+}

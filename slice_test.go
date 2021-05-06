@@ -167,3 +167,38 @@ func TestSliceNil(t *testing.T) {
 	var a []string
 	fmt.Printf("%p %p\n", a, &a)
 }
+
+func TestSliceInsert(t *testing.T) {
+	a := []int{1, 2, 3}
+	a = append([]int{4, 5}, a...)
+
+	fmt.Println(a)
+}
+
+func TestSliceDelete(t *testing.T) {
+	data := DeleteSlice2([]int{1, 2, 3, -1, 0, 2, -3})
+	fmt.Println(data)
+}
+
+func DeleteSlice2(a []int) []int {
+	j := 0
+	for _, val := range a {
+		if val > 0 {
+			a[j] = val
+			j++
+		}
+	}
+	return a[:j]
+}
+
+func TestNilSliceRange(t *testing.T) {
+	var a []int
+	for i, v := range a {
+		fmt.Println(i, v)
+	}
+}
+
+func TestSlice2(t *testing.T) {
+	a := []int{1, 2, 3}
+	fmt.Println(a[:0])
+}
