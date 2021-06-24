@@ -202,3 +202,43 @@ func TestSlice2(t *testing.T) {
 	a := []int{1, 2, 3}
 	fmt.Println(a[:0])
 }
+
+func TestSlice3(t *testing.T) {
+	a := []int{1, 2, 3}
+	b := make([]*int, 0)
+	for _, v := range a {
+		if v == 1 {
+			b = append(b, &v) // b存储的是局部变量v的内存地址，最终v存储的是3
+		}
+	}
+	for _, v := range b {
+		fmt.Println(*v)
+	}
+}
+
+func TestSlice4(t *testing.T) {
+	a := []int{1, 2, 3}
+	b := make([]int, 0)
+	for _, v := range a {
+		if v == 1 {
+			b = append(b, v) // b存储的是局部变量v的拷贝，最终v存储的是3，和拷贝无关
+		}
+	}
+	for _, v := range b {
+		fmt.Println(v)
+	}
+}
+
+func TestSlice5(t *testing.T) {
+	a := []int{1, 2, 3}
+	b := make([]*int, 0)
+	for _, v := range a {
+		if v == 1 {
+			v1 := v            // 局部变量v的拷贝
+			b = append(b, &v1) // b存储的是新局部变量v1的内存地址，每次都会创建
+		}
+	}
+	for _, v := range b {
+		fmt.Println(*v)
+	}
+}

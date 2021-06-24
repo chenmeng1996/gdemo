@@ -74,3 +74,15 @@ func TestMap8(t *testing.T) {
 		fmt.Println(k, v)
 	}
 }
+
+// map取value是copy吗
+func TestMap9(t *testing.T) {
+	a := map[string]P{
+		"v": {1},
+	}
+	p := a["v"]
+	p.a = 2
+
+	a["v"] = p
+	fmt.Println(a)
+}

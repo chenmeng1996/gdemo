@@ -67,3 +67,8 @@ func TestStructEqual(t *testing.T) {
 	b := E{A: 1}
 	fmt.Println(a == b)
 }
+
+func TestStruct3(t *testing.T) {
+	a := make([]struct{}, 3)
+	fmt.Println(len(a))
+}

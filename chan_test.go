@@ -50,3 +50,9 @@ func TestChan3(t *testing.T) {
 
 	time.Sleep(1 * time.Second)
 }
+
+func TestChan4(t *testing.T) {
+	c1 := make(chan int)
+	c2 := c1
+	fmt.Println(c1 == c2)
+}

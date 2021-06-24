@@ -42,3 +42,20 @@ func TestTimeout2(t *testing.T) {
 		fmt.Println(s)
 	}
 }
+
+func TestTimeout3(t *testing.T) {
+	stop := make(chan struct{})
+	go func() {
+		tick := time.Tick(4 * time.Second)
+		select {
+		case <-tick:
+			stop <- struct{}{}
+		}
+	}()
+
+	// 这是一个阻塞逻辑，最多阻塞4秒
+	select {
+	case <-stop:
+		fmt.Println("退出")
+	}
+}
