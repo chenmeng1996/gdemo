@@ -86,3 +86,30 @@ func TestMap9(t *testing.T) {
 	a["v"] = p
 	fmt.Println(a)
 }
+
+func TestMap10(t *testing.T) {
+	a := make(map[string]string)
+	a["a"] = "1"
+	b := a
+	a["b"] = "2"
+	fmt.Println(a, b)
+}
+
+func TestMap11(t *testing.T) {
+	a := make(map[string]string)
+	a["a"] = "1"
+	b := &a
+	a["b"] = "2"
+	fmt.Println(a, b)
+}
+
+func TestMap12(t *testing.T) {
+	var a map[string]int
+	fmt.Println(a["a"])
+}
+
+func TestMap13(t *testing.T) {
+	a := map[string]int{}
+	a["a"] = 1
+	fmt.Println(a)
+}

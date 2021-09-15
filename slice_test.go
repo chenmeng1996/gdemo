@@ -242,3 +242,7 @@ func TestSlice5(t *testing.T) {
 		fmt.Println(*v)
 	}
 }
+
+func TestSlice6(t *testing.T) {
+	fmt.Printf("%v", []int{1, 2})
+}
